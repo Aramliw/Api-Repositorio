@@ -1,0 +1,51 @@
+DIA 04-09-2021 CCNA 3
+
+PROTOCOLOS DE DESCOBERTA DE VIZINHOS 
+CDP -> Cisco discovery protocol
+LLD -> 
+
+show cdp
+show cdp neigbors -> mostra todos os dispositos vizinhos (em dispositivos cisco e nas portas habilitadas)
+show cdp neigbors detail -> mostra os detalhes de todos os dispositivos vizinhos
+
+no cdp enable -> desativa o CDP em uma interface (aconselhado a fazer na porta que esta conectada a internet)
+
+no cdp run -> desabilita o cdp em todo o dispositivo
+
+Router(config-if)#no cdp enable 
+
+Router#sh cdp
+Global CDP information:
+    Sending CDP packets every 60 seconds
+    Sending a holdtime value of 180 seconds
+    Sending CDPv2 advertisements is enabled
+
+Router#sh cdp
+Global CDP information:
+    Sending CDP packets every 60 seconds
+    Sending a holdtime value of 180 seconds
+    Sending CDPv2 advertisements is enabled
+
+Router#sh cdp neighbors detail
+
+
+LLD -> comando usado para visualizar os dispositos visinhos (comando aberto - pode ser usado em todos os equipamento,
+mas não vem habilitado por padrão)
+
+Router(config)#lldp run -> habilita LLDP no dispotivos 
+
+Router(config-if)#no lldp transmit -> desabilita a transmissão do lldp na porta conectada a internet mas não a recepção(se o lldp no ISP
+estiver habilitado o ROUTER ira saber, mas o ISP não ira saber quem é o vizinho.
+
+SW3#sh clock detail
+*1:7:49.729 UTC Mon Mar 1 1993
+Time source is hardware calendar - indica aonde ele esta a buscar a hora (no disposito).
+
+
+COMANDO NTP 
+
+SW3(config)#ntp master -> dispositivo que sera o servidor ntp master (o que ira fornecer a hora a outros dispositivos da rede).
+Todos os dispositivos devem ter o endereço ip.
+
+Router(config)#ntp server 192.168.20.254 -> usado em todos os dispositivos que vão receber a hora do servidor ntp master,
+(os mesmos devem ter ip configurados).
