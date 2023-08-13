@@ -66,7 +66,6 @@ app.post('/arquivos/adicionar', upload.single('arquivo'), (req, res) => {
       res.status(201).json({ mensagem: 'Novo arquivo adicionado com sucesso!'});
     });
 });
-
 app.post('/arquivos/filtrar', (req, res) => {
     let filtrar = req.body;
     res.json(filtrar);
